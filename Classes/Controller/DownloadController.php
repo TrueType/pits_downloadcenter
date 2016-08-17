@@ -46,7 +46,7 @@ class DownloadController extends AbstractController {
         $transilations = $this->getPageTranslations();
         $filetypesObject = $this->filetypeRepository->findAll();
         $fileTypes = $this->getFileTypes( $filetypesObject );
-        $categoryTree = $this->doGetSubCategories(0);
+
         $storageuid = $this->settings['fileStorage'];
         $storageRepository = $this->storageRepository->findByUid($storageuid);
         if( $storageRepository instanceof \TYPO3\CMS\Core\Resource\ResourceStorage )
@@ -101,7 +101,10 @@ class DownloadController extends AbstractController {
         $transilations = $this->getPageTranslations();
         $filetypesObject = $this->filetypeRepository->findAll();
         $fileTypes = $this->getFileTypes( $filetypesObject );
-        $categoryTree = $this->doGetSubCategories(0);
+        
+        $catTreeRootUid = $this->settings['categoryTreeRootUID'] ? : 0;
+        $categoryTree   = $this->doGetSubCategories($catTreeRootUid);
+        
         $storageuid = $this->settings['fileStorage'];
         $showPreview = ($config['showthumbnail'] == 1)?TRUE:FALSE;
         $storageRepository = $this->storageRepository->findByUid( $storageuid );
