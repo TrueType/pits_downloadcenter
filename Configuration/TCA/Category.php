@@ -75,7 +75,7 @@ $GLOBALS['TCA']['tx_pitsdownloadcenter_domain_model_category'] = array(
 				'renderMode' => 'tree',
 				'renderType' => 'selectTree',
 				'foreign_table' => 'tx_pitsdownloadcenter_domain_model_category',
-				'foreign_table_where' => ' AND tx_pitsdownloadcenter_domain_model_category.sys_language_uid IN (-1,0) ORDER BY tx_pitsdownloadcenter_domain_model_category.sorting ASC',
+				'foreign_table_where' => 'AND tx_pitsdownloadcenter_domain_model_category.pid=###CURRENT_PID### AND tx_pitsdownloadcenter_domain_model_category.sys_language_uid IN (-1,0) ORDER BY tx_pitsdownloadcenter_domain_model_category.sorting ASC',
 				'treeConfig' => array(
 					'parentField' => 'parentcategory',
 					'appearance' => array(
